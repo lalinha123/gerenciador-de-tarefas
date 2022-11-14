@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <title>Agenda</title>
+</head>
+<body>
+    <div id="addTarefa" style="display: none" class="formMain">
+        <div class="fundo" onclick="fechaAddForm()"></div>
+        <form method="post">
+            <h2>Adicionar tarefa</h2>
+            <label for="txtTitulo">Título</label><br><input type="text" name="titulo" id="txtTitulo">
+            <br><br>
+            <label for="slcMateria">Matéria</label><br><select name="materia" id="slcMateria">
+                <option value="Programação web">Programação web</option>
+                <option value="Java">Java</option>
+                <option value="Algoritmo">Algoritmo</option>
+            </select>
+            <br><br>
+            <label for="slcStatus">Status</label><br><select name="status" id="slcStatus">
+                <option value="Não iniciado">Não iniciado</option>
+                <option value="Em andamento">Em andamento</option>
+                <option value="Finalizado">Finalizado</option>
+            </select>
+            <br><br>
+            <button type="button" onclick="fechaAddForm()">Cancelar</button>
+            <button type="submit">Adicionar tarefa</button>
+        </form>
+    </div>
+
+    <h1 id="tituloTarefas">Tarefas</h1>
+    <div id="tarefas">
+        <div class="tarefa" id="tarefaAdd" onclick="abreAddForm()">
+            <h3>Adicionar tarefa</h3>
+            <span class="material-symbols-outlined">add</span>
+        </div>
+
+
+        <% if (data) { %>
+            <% data.forEach((tarefa)=> { %>
+                <div class="tarefa" id="tarefa<%= tarefa.id %>">
+                    <div class="titulo">
+                        <h4><%= tarefa.titulo %></h4>
+                        <div class="btns">
+                            <button onclick="abreEditor('<%= tarefa.id %>')"><span class="material-symbols-outlined">edit</span></button>
+                            <form action="/deletar/<%= tarefa.id %>" method="get"><button type="submit"><span class="material-symbols-outlined">delete</span></button></form>
+                        </div>
+                    </div>
+                    <div id="dados<%= tarefa.id %>">
+                        <p class="dado materia"><%= tarefa.materia %></p>
+                        <p class="dado status" status="<%= tarefa.status %>"><%= tarefa.status %></p>
+                    </div>
+                </div>
+
+                <div class="formMain" style="display: none" id="<%= 'editor' + tarefa.id %>">
+                    <div class="fundo" onclick="fechaEditor()"></div>
+                    <form class="editor" method="post" action="/editar/<%= tarefa.id %>">
+                        <h2>Editar tarefa</h2>
+                        <label for="edtTitulo">Título</label><br><input type="text" name="titulo" id="edtTitulo" value="<%= tarefa.titulo %>">
+                        <br><br>
+                        <label for="edtMateria">Matéria</label><br><select name="materia" id="edtMateria">
+                            <option value="Programação web" <%= tarefa.materia == "Programação web" ? 'selected' : '' %>>Programação web</option>
+                            <option value="Java" <%= tarefa.materia == "Java" ? 'selected' : '' %>>Java</option>
+                            <option value="Algoritmo" <%= tarefa.materia == "Algoritmo" ? 'selected' : '' %>>Algoritmo</option>
+                        </select>
+                        <br><br>
+                        <label for="edtStatus">Status</label><br><select name="status" id="edtStatus">
+                            <option value="Não iniciado" <%= tarefa.status == "Não iniciado" ? 'selected' : '' %>>Não iniciado</option>
+                            <option value="Em andamento" <%= tarefa.status == "Em andamento" ? 'selected' : '' %>>Em andamento</option>
+                            <option value="Finalizado" <%= tarefa.status == "Finalizado" ? 'selected' : '' %>>Finalizado</option>
+                        </select>
+                        <br><br>
+                        <button type="button" onclick="fechaEditor('<%= tarefa.id %>')">Cancelar edição</button>
+                        <input type="submit" value="Salvar alterações">
+                    </form>
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+:root {
+    --azul-claro: #e1eff7;
+    --bege: #fff0d9;
+    --rosa: #ffe4e4;
+    --cinza-escuro: rgb(48, 48, 48);
+    --cinza-claro: #f3f2f2;
+
+    --bg: var(--azul-claro);
+    --bg2: white;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    color: var(--cinza-escuro);
+
+    transition: 0.2s;
+}
+
+body {
+    background-color: var(--bg);
+    overflow-x: hidden;
+}
+
+h1#tituloTarefas {
+    margin: 8vh auto 10vh;
+    text-align: center;
+}
+
+#tarefas {
+    width: 70vw;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2vw;
+}
+
+#tarefas .tarefa {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px 15px;
+}
+
+#tarefas .tarefa#tarefaAdd {
+    background-color: var(--bg2);
+    text-align: center;
+    border: none;
+}
+
+#tarefas .tarefa#tarefaAdd span {
+    font-size: 40px;
+}
+
+#tarefas .tarefa#tarefaAdd:hover {
+    cursor: pointer;
+    transform: scale(102%);
+}
+
+#tarefas .tarefa .titulo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#tarefas .tarefa .titulo h4 {
+    margin: 0;
+}
+
+#tarefas .tarefa .btns {
+    text-align: left;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+#tarefas .tarefa .btns button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    margin: 0 0 0 8px;
+}
+
+#tarefas .tarefa .btns button span {
+    font-size: 22px;
+    padding: 5px 2px;
+}
+
+#tarefas .tarefa .btns button:hover {
+    background-color: var(--cinza-claro);
+    cursor: pointer;
+}
+
+#tarefas .tarefa .dado.materia {
+    margin: 1vh 0;
+}
+
+#tarefas .tarefa .dado.status {
+    font-size: 14px;
+    width: fit-content;
+    border-radius: 5px;
+    margin: 5vh 0 0;
+    padding: 3px 10px;
+}
+
+#tarefas .tarefa .dado.status[status *= 'Não iniciado'] {
+    background-color: var(--cinza-claro);
+}
+
+#tarefas .tarefa .dado.status[status *= 'Em andamento'] {
+    background-color: #fff385;
+}
+
+#tarefas .tarefa .dado.status[status *= 'Finalizado'] {
+    background-color: #83ff94;
+}
+
+.formMain {
+    position: absolute;
+}
+
+.formMain .fundo {
+    background-color: #00000062;
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 600;
+}
+
+.formMain form {
+    background-color: var(--bg2);
+    width: fit-content;
+    min-width: 350px;
+    border: 1px solid var(--cinza-escuro);
+    border-radius: 10px;
+    padding: 30px;
+
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.formMain form h2 {
+    text-align: center;
+}
+
+.formMain form input,
+.formMain form select {
+    font-size: 15px;
+    border-radius: 5px;
+    border: 0.7px solid var(--cinza-escuro);
+    outline: none;
+    padding: 3px 10px;
+}
+
+.formMain select:hover {
+    cursor: pointer;
+}
+
+.formMain input[type='text'] {
+    width: 100%;
+}
