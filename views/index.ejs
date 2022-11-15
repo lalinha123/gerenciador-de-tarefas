@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,7 +42,7 @@
 
         <% if (data) { %>
             <% data.forEach((tarefa)=> { %>
-                <div class="tarefa" id="tarefa<%= tarefa.id %>">
+                <div class="tarefa" id="tarefa<%= tarefa.id %>" nome="<%= tarefa.titulo %>">
                     <div class="titulo">
                         <h4><%= tarefa.titulo %></h4>
                         <div class="btns">

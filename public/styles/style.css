@@ -2,8 +2,7 @@
 
 :root {
     --azul-claro: #e1eff7;
-    --bege: #fff0d9;
-    --rosa: #ffe4e4;
+    --azul: #77c3f0;
     --cinza-escuro: rgb(48, 48, 48);
     --cinza-claro: #f3f2f2;
 
@@ -78,6 +77,7 @@ h1#tituloTarefas {
 
 #tarefas .tarefa .btns button {
     background-color: transparent;
+    max-height: 35px;
     outline: none;
     border: none;
     border-radius: 50%;
